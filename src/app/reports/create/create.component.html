@@ -1,1 +1,70 @@
-<p>create works!</p>
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" required />
+        <mat-error *ngIf="reportForm.get('firstName')?.hasError('required')">
+          First name is required.
+        </mat-error>
+        <mat-error *ngIf="reportForm.get('firstName')?.hasError('maxlength')">
+          Max length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" required />
+        <mat-error *ngIf="reportForm.get('lastName')?.hasError('required')">
+          Last name is required.
+        </mat-error>
+        <mat-error *ngIf="reportForm.get('lastName')?.hasError('maxlength')">
+          Max length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Birth Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="reportForm.get('birthDate')?.hasError('required')">
+          Birth date is required.
+        </mat-error>
+        <mat-error *ngIf="reportForm.get('birthDate')?.hasError('ageInvalid')">
+          Age must be less than 100 years.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="non-binary">Non-binary</mat-option>
+        </mat-select>
+        <mat-error *ngIf="reportForm.get('gender')?.hasError('required')">
+          Gender is required.
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="reportForm.get('email')?.hasError('required')">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="reportForm.get('email')?.hasError('email')">
+          Enter a valid email.
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="reportForm.get('description')?.hasError('required')">
+          Description is required.
+        </mat-error>
+      </mat-form-field>
+    
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+
+</form>
