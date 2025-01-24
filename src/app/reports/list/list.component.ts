@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import {  MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list',
-  imports: [MatTableModule, CommonModule, MatButton],
+  imports: [MatTableModule, CommonModule, MatButtonModule, RouterModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
