@@ -1,0 +1,58 @@
+{
+  "reports": [
+    {
+      "author": {
+        "first_name": "Alice",
+        "last_name": "Dupont",
+        "birth_date": "1990-06-15T00:00:00.000Z",
+        "gender": "Homme",
+        "email": "alice.dupont@example.com"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "observations": [
+        {
+          "id": "1",
+          "name": "Observation 1"
+        },
+        {
+          "id": "2",
+          "name": "Observation 2"
+        }
+      ],
+      "id": "1zd0"
+    },
+    {
+      "author": {
+        "first_name": "Bob",
+        "last_name": "Martin",
+        "birth_date": "1985-11-25T00:00:00.000Z",
+        "gender": "Homme",
+        "email": "bob.martin@example.com"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "observations": [
+        {
+          "id": "2",
+          "name": "Observation 2"
+        }
+      ],
+      "id": "2oc2"
+    },
+    {
+      "author": {
+        "first_name": "ddze",
+        "last_name": "zdazd",
+        "birth_date": "2025-01-08T23:00:00.000Z",
+        "gender": "female",
+        "email": "zdazd@dzd.com"
+      },
+      "description": "zefzef",
+      "observations": [
+        {},
+        {},
+        {}
+      ],
+      "id": "66b6"
+    }
+  ]
+}

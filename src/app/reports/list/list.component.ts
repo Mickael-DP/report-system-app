@@ -1,57 +1,49 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import {  MatButtonModule } from '@angular/material/button';
+import { Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { Report } from '../../models/report.model';
 
 @Component({
   selector: 'app-list',
-  imports: [MatTableModule, CommonModule, MatButtonModule, RouterModule],
+  standalone: true,
+  imports: [MatTableModule, CommonModule, MatButtonModule],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+  styleUrls: ['./list.component.css'],
 })
-export class ListComponent {
-  reports = [
-    {
-      id: 1,
-      firstName: 'Alice',
-      lastName: 'Dupont',
-      birthDate: new Date(1990, 5, 15),
-      gender: 'Female',
-      email: 'alice.dupont@example.com',
-      description: 'lorem upsum dolor sit amet.',
-    },
-    {
-      id: 2,
-      firstName: 'Bob',
-      lastName: 'Martin',
-      birthDate: new Date(1985, 10, 25),
-      gender: 'Male',
-      email: 'bob.martin@example.com',
-      description: 'lorem upsum dolor sit amet.',
-    },
-    {
-      id: 3,
-      firstName: 'Charlie',
-      lastName: 'Durand',
-      birthDate: new Date(1975, 3, 5),
-      gender: 'Male',
-      email: 'charlie.durand@example.com',
-      description: 'lorem upsum dolor sit amet.',
-    },
-  ];
-
+export class ListComponent implements OnInit {
+  reports: Report[] = [];
   displayedColumns: string[] = [
     'firstName',
     'lastName',
     'birthDate',
     'gender',
     'email',
+    'observations',
     'description',
     'actions',
   ];
 
-  editReport(id: number) {
-    console.log('edit report', id);
+  constructor(private apiService: ApiService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.loadReports();
+  }
+
+  loadReports(): void {
+    this.apiService.getReports().subscribe({
+      next: (data) => (this.reports = data),
+      error: (err) => console.error('Erreur lors du chargement des signalements :', err),
+    });
+  }
+
+  editReport(id: string): void {
+    this.router.navigate(['/reports/edit', id]);
+  }
+
+  hasNoObservations(observations: any[]): boolean {
+    return !observations || observations.length === 0 || observations.every(obs => obs === null);
   }
 }

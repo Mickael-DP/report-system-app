@@ -1,82 +1,88 @@
 <div class="edit-container">
-    <h2>Modifier un signalement</h2>
-  
-    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
-      <!-- Prénom -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Prénom</mat-label>
-        <input matInput formControlName="firstName" placeholder="Prénom" />
-        <mat-error *ngIf="reportForm.get('firstName')?.hasError('required')">
-          Le prénom est requis.
-        </mat-error>
-        <mat-error *ngIf="reportForm.get('firstName')?.hasError('maxlength')">
-          Le prénom ne peut pas dépasser 50 caractères.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Nom -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Nom</mat-label>
-        <input matInput formControlName="lastName" placeholder="Nom" />
-        <mat-error *ngIf="reportForm.get('lastName')?.hasError('required')">
-          Le nom est requis.
-        </mat-error>
-        <mat-error *ngIf="reportForm.get('lastName')?.hasError('maxlength')">
-          Le nom ne peut pas dépasser 50 caractères.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Date de naissance -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Date de naissance</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="Date de naissance" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="reportForm.get('birthDate')?.hasError('required')">
-          La date de naissance est requise.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Sexe -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Sexe</mat-label>
-        <mat-select formControlName="gender">
-          <mat-option value="Homme">Homme</mat-option>
-          <mat-option value="Femme">Femme</mat-option>
-          <mat-option value="Non-binaire">Non-binaire</mat-option>
-        </mat-select>
-        <mat-error *ngIf="reportForm.get('gender')?.hasError('required')">
-          Le sexe est requis.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Email -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Email" />
-        <mat-error *ngIf="reportForm.get('email')?.hasError('required')">
-          L'email est requis.
-        </mat-error>
-        <mat-error *ngIf="reportForm.get('email')?.hasError('email')">
-          L'email n'est pas valide.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Description -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="Description" rows="4"></textarea>
-        <mat-error *ngIf="reportForm.get('description')?.hasError('required')">
-          La description est requise.
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Bouton de soumission -->
-      <div class="button-container">
-        <button mat-raised-button color="primary" [disabled]="reportForm.invalid" type="submit">
-          Sauvegarder les modifications
-        </button>
-      </div>
-    </form>
-  </div>
-  
+  <h2>Modifier un signalement</h2>
+
+  <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="firstName" placeholder="Prénom" />
+      <mat-error *ngIf="reportForm.get('firstName')?.hasError('required')">
+        Le prénom est requis.
+      </mat-error>
+      <mat-error *ngIf="reportForm.get('firstName')?.hasError('maxlength')">
+        Le prénom ne peut pas dépasser 50 caractères.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="lastName" placeholder="Nom" />
+      <mat-error *ngIf="reportForm.get('lastName')?.hasError('required')">
+        Le nom est requis.
+      </mat-error>
+      <mat-error *ngIf="reportForm.get('lastName')?.hasError('maxlength')">
+        Le nom ne peut pas dépasser 50 caractères.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="Date de naissance" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="reportForm.get('birthDate')?.hasError('required')">
+        La date de naissance est requise.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Sexe</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="Homme">Homme</mat-option>
+        <mat-option value="Femme">Femme</mat-option>
+        <mat-option value="Non-binaire">Non-binaire</mat-option>
+      </mat-select>
+      <mat-error *ngIf="reportForm.get('gender')?.hasError('required')">
+        Le sexe est requis.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email" />
+      <mat-error *ngIf="reportForm.get('email')?.hasError('required')">
+        L'email est requis.
+      </mat-error>
+      <mat-error *ngIf="reportForm.get('email')?.hasError('email')">
+        L'email n'est pas valide.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Description" rows="4"></textarea>
+      <mat-error *ngIf="reportForm.get('description')?.hasError('required')">
+        La description est requise.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Observations</mat-label>
+      <mat-select formControlName="observations" multiple>
+        <mat-option *ngFor="let obs of observations" [value]="obs.id">
+          {{ obs.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" [disabled]="reportForm.invalid" type="submit">
+        Sauvegarder les modifications
+      </button>
+    </div>
+  </form>
+</div>
